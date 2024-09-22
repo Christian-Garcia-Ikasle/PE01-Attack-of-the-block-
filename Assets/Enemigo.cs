@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemigo : MonoBehaviour
@@ -13,12 +10,5 @@ public class Enemigo : MonoBehaviour
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
         rb.AddForce(Empuje*300);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
 }
