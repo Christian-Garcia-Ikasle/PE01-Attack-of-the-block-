@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            Time.timeScale = 0;
             UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();    ;
         }
