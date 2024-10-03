@@ -9,6 +9,10 @@ public class retry : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
+    public void LoadTitle()
+    {
+        SceneManager.LoadScene("Title");
+    }
     public void QuitGame()
     {
         Application.Quit();
