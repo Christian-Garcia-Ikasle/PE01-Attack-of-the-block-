@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        //This is to make the cursor disapear
+        Cursor.visible = false;
         //Audio source selected
         audioSource = GetComponent<AudioSource>();
     }
@@ -65,6 +67,7 @@ public class PlayerController : MonoBehaviour
             audioSource.clip = sounds[1];
             audioSource.Play();
             SceneManager.LoadScene("GameOver");
+            Cursor.visible = true;
             } else
             {
             audioSource.clip = sounds[0];

@@ -8,10 +8,12 @@ public class retry : MonoBehaviour
     public void LoadGame()
     {
         SceneManager.LoadScene("Game");
+        Cursor.visible = true;
     }
     public void LoadTitle()
     {
         SceneManager.LoadScene("Title");
+        Cursor.visible = true;
     }
     public void QuitGame()
     {
