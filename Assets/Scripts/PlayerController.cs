@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Diagnostics;
 using JetBrains.Annotations;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -11,6 +12,9 @@ using UnityEngine.Video;
 
 public class PlayerController : MonoBehaviour
 {
+    //The variable for the score
+    public int score = 0;
+    public TextMeshProUGUI scoreText;
     int vidas = 3;
     //Audio source and sound array declaration
     private AudioSource audioSource;
@@ -31,15 +35,21 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Con las siguientes lineas el personaje seguira a el raton
-
+        //this mekes the character follow the cursor
+        if(Time.timeScale==0){
+            return;
+        }
+        //Adds points to the final score
+        score++;
+        scoreText.SetText("Score : "+score);
+        //this mekes the character follow the cursor
         Vector3 posicionRaton = Input.mousePosition;
         posicionRaton = Camera.main.ScreenToWorldPoint(posicionRaton);
         transform.position = new Vector3(posicionRaton.x, posicionRaton.y, 0);
        
     }
 
-    //Aqui le especifico que si le tocan pierde
+    //This controls what happens when the character gets hit
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -68,6 +78,7 @@ public class PlayerController : MonoBehaviour
             audioSource.Play();
             SceneManager.LoadScene("GameOver");
             Cursor.visible = true;
+           // use playerprefs to save the score
             } else
             {
             audioSource.clip = sounds[0];
