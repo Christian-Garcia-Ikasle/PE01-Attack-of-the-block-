@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     //The variable for the score
     public int score = 0;
     public TextMeshProUGUI scoreText;
+    public float speed = 20f;
 
     //The variables for top 5 ranking
     public int top1;
@@ -95,6 +96,12 @@ public class PlayerController : MonoBehaviour
         Vector3 posicionRaton = Input.mousePosition;
         posicionRaton = Camera.main.ScreenToWorldPoint(posicionRaton);
         transform.position = new Vector3(posicionRaton.x, posicionRaton.y, 0);
+       
+       //rotation mechanic
+        if(Input.GetMouseButtonDown(0))
+        {
+            transform.Rotate(Vector3.right * speed * Time.deltaTime);
+        }
        
     }
 
